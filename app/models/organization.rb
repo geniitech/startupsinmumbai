@@ -38,6 +38,8 @@ class Organization < ActiveRecord::Base
   after_validation :geocode, if: :address_changed?
 
   def logo_url=(url)
-    self.logo = URI.parse(URI.encode(url)) rescue nil
+    unless url.blank?
+      self.logo = URI.parse(URI.encode(url)) rescue nil
+    end
   end
 end
