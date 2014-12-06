@@ -52,3 +52,4 @@ build/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 >>>>>>> ae451d08045248a7b4f9bfe951e252aac39bdaef
+config/secrets.yml
