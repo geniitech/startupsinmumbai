@@ -11,6 +11,8 @@ set :deploy_via, :export
 set :ssh_options, {
   forward_agent: true
 }
+set :rvm1_ruby_version, '2.0.0'
+set :bundle_flags, '--without development test --deployment'
 
 namespace :deploy do
 
