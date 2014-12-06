@@ -1,14 +1,16 @@
-# config valid only for Capistrano 3.1
 lock '3.3.3'
 require 'capistrano-db-tasks'
 set :application, 'startupsinmumbai'
 set :repo_url, 'git@github.com:geniitech/startupsinmumbai.git'
-set :db_local_clean, true
-set :db_remote_clean, true
 set :assets_dir, ["public/assets", "public/system"]
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
 set :default_stage, 'production'
+set :deploy_to, '/home/webadmin/sites/startupsinmumbai'
+set :deploy_via, :export
+set :ssh_options, {
+  forward_agent: true
+}
 
 namespace :deploy do
 
