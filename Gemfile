@@ -17,3 +17,11 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'rails_admin'
 gem 'acts-as-taggable-on', '~> 3.4'
+
+group :development do
+  gem 'capistrano',  '~> 3.3.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-db-tasks', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
+end

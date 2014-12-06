@@ -12,4 +12,6 @@ class Category < ActiveRecord::Base
 
   has_many :organizations
 
+  validates :name, presence: true
+
 end
