@@ -41,3 +41,13 @@ namespace :deploy do
 
   after :updated, :symlink_db
 end
+
+namespace :logs do
+ desc "tail rails logs"
+  task :tail do
+    on roles(:app) do
+      trap("INT") { puts 'Y U NO SEE MORE LOGS?!'; exit 0; }
+      execute "tail -f #{current_path}/log/#{fetch(:rails_env)}.log"
+    end
+  end
+end
