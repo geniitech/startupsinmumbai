@@ -4,7 +4,11 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '107.170.92.134', user: 'webadmin', roles: %w{web app db}, runner: 'webadmin', password: 'Qwerty123!'
+set :stage, :production
+set :branch, 'master'
+set :rails_env, :production
+
+server 'geniilabs.in', user: 'webadmin', roles: %w{web app db}, runner: 'webadmin', password: 'Qwerty123!'
 set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
 
 # set :rails_env, 'staging'                  # If the environment differs from the stage name

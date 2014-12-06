@@ -20,8 +20,12 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'capistrano',  '~> 3.3.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-db-tasks', require: false
-  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1.0'
+  # rails specific capistrano funcitons
+  gem 'rvm1-capistrano3', require: false
+  # integrate bundler with capistrano
+  gem 'capistrano-bundler'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
+  gem 'capistrano-db-tasks', require: false
+
 end
