@@ -46,7 +46,7 @@ function appendToListing(item, marker) {
     $('#investorsList').append(listItem);
   else if(item.category.name == 'Incubators')
     $('#incubatorsList').append(listItem);
-  else if(item.category.name == 'Coworking Space')
+  else if(item.category.name == 'Coworking Spaces')
     $('#coworkingList').append(listItem);
   else if(item.category.name == 'Accelerators')
     $('#acceleratorsList').append(listItem);
@@ -68,8 +68,8 @@ $(function() {
   //inital map options
 
   var mapOptions = {
-    center: { lat: 19.049943, lng: 72.851061},
-    zoom: 11
+    center: { lat: 19.0949, lng: 72.8865},
+    zoom: 12
   };
 
   //get JSON file
@@ -83,17 +83,17 @@ $(function() {
       var myLatlng = new google.maps.LatLng(val.latitude,val.longitude);
 
       //marker for current company
-      var imgUrl = '/assets/marker-startup.png';
+      var imgUrl = "<%= asset_path('marker-startup.png') %>";
       if(val.category.name == 'Startups')
-        imgUrl = '/assets/marker-startup.png';
+        imgUrl = "<%= asset_path('marker-startup.png') %>";
       else if(val.category.name == 'Investors')
-        imgUrl = '/assets/marker-investor.png';
+        imgUrl = "<%= asset_path('marker-investor.png') %>";
       else if(val.category.name == 'Incubators')
-        imgUrl = '/assets/marker-incubator.png';
-      else if(val.category.name == 'Coworking Space')
-        imgUrl = '/assets/marker-coworking.png';
+        imgUrl = "<%= asset_path('marker-incubator.png') %>";
+      else if(val.category.name == 'Coworking Spaces')
+        imgUrl = "<%= asset_path('marker-coworking.png') %>";
       else if(val.category.name == 'Accelerators')
-        imgUrl = '/assets/marker-accelerator.png';
+        imgUrl = "<%= asset_path('marker-accelerator.png') %>";
 
       var marker = new google.maps.Marker({
           position: myLatlng,

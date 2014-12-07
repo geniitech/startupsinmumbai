@@ -1,5 +1,6 @@
 lock '3.3.3'
 require 'capistrano-db-tasks'
+
 set :application, 'startupsinmumbai'
 set :repo_url, 'git@github.com:geniitech/startupsinmumbai.git'
 set :assets_dir, ["public/assets", "public/system"]
