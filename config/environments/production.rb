@@ -86,11 +86,4 @@ Rails.application.configure do
     domain: 'startupsinmumbai.com', # your domain to identify your server when connecting
   }
 
-  Startupsinmumbai::Application.config.middleware.use ExceptionNotification::Rack,
-    email: {
-      email_prefix: 'Startupsinmumbai Production Error:',
-      sender_address: %{'error' <error@startupsinmumbai.com>},
-      exception_recipients: %w{varun@genii.in karan@genii.in}
-    }
-
 end
