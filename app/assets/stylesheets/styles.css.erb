@@ -304,7 +304,7 @@ p.address {
   background-color: #000;
   border: 0;
   padding-left: 47px;
-  background-image: url(/assets/search-icon.png);
+  background-image: url(<%= asset_path 'search-icon.png' %>);
   background-repeat: no-repeat;
   width: 300px;
   box-sizing: border-box;
@@ -317,7 +317,7 @@ p.address {
 }
 
 #searchField:focus {
-  background-image: url(/assets/search-icon-selected.png);
+  background-image: url(<%= asset_path 'search-icon-selected.png' %>);
 }
 
 

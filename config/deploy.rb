@@ -1,5 +1,6 @@
 lock '3.3.3'
 require 'capistrano-db-tasks'
+
 set :application, 'startupsinmumbai'
 set :repo_url, 'git@github.com:geniitech/startupsinmumbai.git'
 set :assets_dir, ["public/assets", "public/system"]
@@ -12,9 +13,10 @@ set :ssh_options, {
   user: "webadmin",
   keys: %w(~/.ssh/id_rsa),
   forward_agent: true,
-  auth_methods: %w(publickey),
-  passphrase: 'qwe123'
+  auth_methods: %w(publickey)
 }
+set :rvm1_ruby_version, '2.0.0'
+set :bundle_flags, '--without development test --deployment'
 
 namespace :deploy do
 
