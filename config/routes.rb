@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'fetch' => 'main#fetch'
+  post 'submission' => 'main#submission'
   root to: 'main#home'
 end

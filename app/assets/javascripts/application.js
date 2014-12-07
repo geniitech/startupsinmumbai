@@ -16,4 +16,5 @@
 //= require modernizr-2.6.2.min
 //= require classie
 //= require modalEffects
+//= require mailcheck
 //= require main

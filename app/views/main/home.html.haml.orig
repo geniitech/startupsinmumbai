@@ -61,10 +61,14 @@
                 = f.text_field :address
             .clearfix
             .cta-box
+<<<<<<< Updated upstream
               %button{:type => "submit"} Submit
           .success-box
             %img{src: asset_path('tick.png'), :alt => "Tick", width: "60px"}
             %p Thanks for taking to the time and effort to make a submission. We will inform you once we’ve reviewed and added it to our list.
+=======
+              %button{type: "submit"} Submit
+>>>>>>> Stashed changes
     #modal-2.md-modal.md-effect-10
       .md-content
         %div
@@ -74,8 +78,12 @@
           .about-footer.center
             %p
               Made with love by
+<<<<<<< Updated upstream
               %a{:href => "http://genii.in", :target => "blank" }
                 %img{:alt => "Genii", src: asset_path('genii.png'), width: "40px"}
+=======
+              %img{alt: "Genii", src: asset_path('genii.png'), width: "40px"}
+>>>>>>> Stashed changes
     .md-overlay
     %header
       .logo
@@ -142,7 +150,10 @@
                 )
               .content
                 %ul#coworkingList
+<<<<<<< Updated upstream
       .clearfix
+    %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyA52pI2ePsZMPpyYB91F2ev5vJWdYatkrQ", :type => "text/javascript"}
+=======
     %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA52pI2ePsZMPpyYB91F2ev5vJWdYatkrQ", type: "text/javascript"}
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -151,3 +162,4 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-26353814-4', 'auto');
       ga('send', 'pageview');
+>>>>>>> Stashed changes

@@ -75,4 +75,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.smtp_settings = {
+    address:   'smtp.mandrillapp.com',
+    port:      25, # ports 587 and 2525 are also supported with STARTTLS
+    enable_starttls_auto: true, # detects and uses STARTTLS
+    user_name: 'info@genii.in',
+    password:  '15abd013-29da-4b0b-bdd4-e5d7993b8c82', # SMTP password is any valid API key
+    authentication: 'login', # Mandrill supports 'plain' or 'login'
+    domain: 'startupsinmumbai.com', # your domain to identify your server when connecting
+  }
+
+  Startupsinmumbai::Application.config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: 'Startupsinmumbai Production Error:',
+      sender_address: %{'error' <error@startupsinmumbai.com>},
+      exception_recipients: %w{varun@genii.in karan@genii.in}
+    }
+
 end

@@ -179,4 +179,20 @@ $(function() {
     $('#acceleratorsCount').html(acceleratorsCount);
 
   });
+
+  $('#organization_submitter_email').on('blur', function() {
+    $(this).mailcheck({
+      suggested: function(element, suggestion) {
+        $("#mailcheck").html('');
+        $("#mailcheck").html('did you mean <a href="#" id="mc_suggestion">' + suggestion.full + '</a>?</span>');
+        $("#mc_suggestion").on('click', function(){
+          $('#organization_submitter_email').val(suggestion.full);
+          $("#mailcheck").html('');
+        });
+      },
+      empty: function(element) {
+        $("#mailcheck").html('');
+      }
+    });
+  });
 });
