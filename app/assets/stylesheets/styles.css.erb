@@ -57,11 +57,13 @@ section {
   width: 100%;
   height: 100vh;
   min-height: 500px;
+  overflow: hidden;
 }
 
 div#map {
+  margin-top: 46px;
   width: 80%;
-  height: 100%;
+  height: 100vh;
   position: relative;
   box-sizing: border-box;
   float: left;
@@ -70,7 +72,7 @@ div#map {
 
 div.listing {
   width: 20%;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box;
   padding-top: 45px;
   overflow: hidden;
@@ -329,4 +331,25 @@ ul.ui-autocomplete {
 
 .ui-state-focus {
   background-color: #2F3636 !important;
+}
+
+.search-clear {
+  position: absolute;
+  right: -10px;
+  top: 10px;
+  color: #666;
+  cursor: pointer;
+}
+
+.success-box {
+  display: none;
+  color: #78d513;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 50px;
+}
+
+.success-box p {
+  font-size: 18px;
 }

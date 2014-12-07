@@ -60,6 +60,9 @@
             .clearfix
             .cta-box
               %button{:type => "submit"} Submit
+          .success-box
+            %img{src: asset_path('tick.png'), :alt => "Tick", width: "60px"}
+            %p Thanks for taking to the time and effort to make a submission. We will inform you once we’ve reviewed and added it to our list.
     #modal-2.md-modal.md-effect-10
       .md-content
         %div
@@ -69,7 +72,8 @@
           .about-footer.center
             %p
               Made with love by
-              %img{:alt => "Genii", src: asset_path('genii.png'), width: "40px"}
+              %a{:href => "http://genii.in", :target => "blank" }
+                %img{:alt => "Genii", src: asset_path('genii.png'), width: "40px"}
     .md-overlay
     %header
       .logo
@@ -83,6 +87,8 @@
           %li
             .search-container
               %input#searchField{:name => "search", :placeholder => "Search", :type => "text"}
+              %span.search-clear
+                %i.fa.fa-times
 
     %section
       #map
@@ -93,30 +99,45 @@
               %span#startupsButton
                 %i.fa.fa-lightbulb-o
                 Startups
+                (
+                %span#startupsCount
+                )
               .content
                 %ul#startupsList
             %li
               %span#investorsButton
                 %i.fa.fa-rupee
                 Investors
+                (
+                %span#investorsCount
+                )
               .content
                 %ul#investorsList
             %li
               %span#acceleratorsButton
                 %i.fa.fa-line-chart
                 Accelerators
+                (
+                %span#acceleratorsCount
+                )
               .content
                 %ul#acceleratorsList
             %li
               %span#incubatorsButton
                 %i.fa.fa-leaf
                 Incubators
+                (
+                %span#incubatorsCount
+                )
               .content
                 %ul#incubatorsList
             %li
               %span#coworkingButton
                 %i.fa.fa-user
                 Co-working spaces
+                (
+                %span#coworkingCount
+                )
               .content
                 %ul#coworkingList
       .clearfix

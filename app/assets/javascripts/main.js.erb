@@ -1,7 +1,12 @@
-var map;
-var infowindow = null;
-var activeMarker = null;
-var autocompleteList= [];
+var map,
+    infowindow = null,
+    activeMarker = null,
+    autocompleteList= [],
+    startupsCount = 0,
+    investorsCount = 0,
+    incubatorsCount = 0,
+    acceleratorsCount = 0,
+    coworkingCount = 0;
 
 function makeInfoWindow(item, marker) {
   var contentString = '<div class="infowindow"><p><img src="' + item.logo_json_url + '" width="30px" /><b>' + item.name +'</b></p><p>' + item.description +'</p><p><a href="'+ item.website +'" target="blank">' + item.website + '</a></p><p class="address">' + item.address + '</p></div>';
@@ -41,18 +46,41 @@ function appendToListing(item, marker) {
   });
 
   if(item.category.name == 'Startups')
+  {
+    startupsCount++;
     $('#startupsList').append(listItem);
+  }
   else if(item.category.name == 'Investors')
+  {
+    investorsCount++;
     $('#investorsList').append(listItem);
+  }
   else if(item.category.name == 'Incubators')
+  {
+    incubatorsCount++;
     $('#incubatorsList').append(listItem);
+  }
   else if(item.category.name == 'Coworking Spaces')
+  {
+    coworkingCount++;
     $('#coworkingList').append(listItem);
+  }
   else if(item.category.name == 'Accelerators')
+  {
+    acceleratorsCount++;
     $('#acceleratorsList').append(listItem);
+  }
 }
 
 $(function() {
+
+  $('.search-clear').hide();
+
+  $('.search-clear').click(function() {
+    $('#searchField').val('');
+    $('.search-clear').hide();
+
+  });
 
   $('#logoClick').click(function() {
     location.reload();
@@ -126,10 +154,16 @@ $(function() {
       autocompleteList.push(val.name);
     });
 
+    $( "#searchField" ).keyup(function() {
+      if($(this).val() == '')
+        $('.search-clear').hide();
+      else
+        $('.search-clear').show();
+    });
+
     $( "#searchField" ).autocomplete({
       source: autocompleteList,
       minLength: 2,
-
     });
 
     $( "#searchField" ).on( "autocompleteselect", function( event, ui ) {
@@ -137,6 +171,12 @@ $(function() {
       $('#searchField').val('');
       $('*[data-name="' + value + '"]').click();
     });
+
+    $('#startupsCount').html(startupsCount);
+    $('#investorsCount').html(investorsCount);
+    $('#incubatorsCount').html(incubatorsCount);
+    $('#coworkingCount').html(coworkingCount);
+    $('#acceleratorsCount').html(acceleratorsCount);
 
   });
 });
