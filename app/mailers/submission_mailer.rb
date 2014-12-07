@@ -1,5 +1,5 @@
 class SubmissionMailer < ActionMailer::Base
-  default 'no-reply@startupsinmumbai.com'
+  default from: 'no-reply@startupsinmumbai.com'
 
   def thanks(organization)
     @organization = organization

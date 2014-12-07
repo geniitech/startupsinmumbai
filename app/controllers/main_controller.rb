@@ -6,7 +6,7 @@ class MainController < ApplicationController
   end
 
   def fetch
-    @organizations = Organization.where(approved: true)
+    @organizations = Organization.where(approved: true).order('name asc')
     render json: @organizations.to_json(include: [:category], methods: [:logo_json_url])
   end
 
@@ -23,6 +23,7 @@ class MainController < ApplicationController
     @organization.category_id = params[:organization][:category_id]
     @organization.approved = false
     if @organization.save
+      SubmissionMailer.thanks(@organization)
       render json: "success", status: 200
     else
       render json: "fail", status: 402
