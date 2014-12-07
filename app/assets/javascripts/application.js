@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery-ui.min
+//= require modernizr-2.6.2.min
+//= require classie
+//= require modalEffects
+//= require main

@@ -12,7 +12,8 @@ set :ssh_options, {
   user: "webadmin",
   keys: %w(~/.ssh/id_rsa),
   forward_agent: true,
-  auth_methods: %w(publickey)
+  auth_methods: %w(publickey),
+  passphrase: 'qwe123'
 }
 
 namespace :deploy do

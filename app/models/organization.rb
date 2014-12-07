@@ -30,6 +30,7 @@ class Organization < ActiveRecord::Base
   validates :name, :address, presence: true
   validates :approved, inclusion: { in: [true, false] }
   validates :submitter_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, allow_blank: true
+  validates :website, uniqueness: true, allow_blank: true
 
   has_attached_file :logo, styles: { thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment :logo, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..1.megabytes }
@@ -42,4 +43,9 @@ class Organization < ActiveRecord::Base
       self.logo = URI.parse(URI.encode(url)) rescue nil
     end
   end
+
+  def logo_json_url
+    logo.url(:thumb)
+  end
+
 end

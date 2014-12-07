@@ -1,0 +1,124 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}
+      %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+        %title Startups in Mumbai
+        %meta{:content => "", :name => "description"}
+          %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+            / Place favicon.ico and apple-touch-icon.png in the root directory
+            %link{:href => "http://fonts.googleapis.com/css?family=Raleway:800,400", :rel => "stylesheet", :type => "text/css"}
+              %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}
+                = stylesheet_link_tag 'application', media: 'all'
+                = javascript_include_tag 'application'
+                = csrf_meta_tags
+  %body
+    /[if lt IE 7]
+      %p.browsehappy
+        You are using an
+        %strong outdated
+        browser. Please
+        %a{:href => "http://browsehappy.com/"} upgrade your browser
+        to improve your experience.
+    / Add your site or application content here
+    #modal-1.md-modal.md-effect-10
+      .md-content
+        .submission-container
+          .form-description
+            %p Startups in Mumbai is a project made to lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit incidunt quaerat repudiandae vitae consequuntur explicabo aliquid nulla voluptas, necessitatibus eos temporibus quidem est! Blanditiis facilis odit explicabo veniam necessitatibus eligendi!
+          %form{:action => "#"}
+            .half
+              .form-group
+                %label{:for => "logo"} Logo
+                %input#name{:name => "name", :type => "text"}
+              .form-group
+                %label{:for => "name"} Name
+                %input#name{:name => "name", :type => "text"}
+              .form-group
+                %label{:for => "description"} Description
+                %textarea#description{:cols => "30", :name => "description", :rows => "2"}
+              .form-group
+                %label{:for => "category"} Category
+                %select#category{:name => "category", :type => "text"}
+                  %option{:value => "1"} Startup
+                  %option{:value => "2"} Investor
+            .half
+              .form-group
+                %label{:for => "address"} Address
+                %input#address{:name => "address", :type => "text"}
+              .form-group
+                %label{:for => "tags"} Tags
+                %input#tags{:name => "tags", :type => "text"}
+              .form-group
+                %label{:for => "website"} Website
+                %input#website{:name => "website", :type => "url"}
+            .clearfix
+            .cta-box
+              %button{:type => "submit"} Submit
+    #modal-2.md-modal.md-effect-10
+      .md-content
+        %div
+          .center.about-image
+            %img{:alt => "About Startups in Mumbai", :src => "/assets/logo-large.png", :width => "300px"}
+          %p Startups in Mumbai is a project made to lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit incidunt quaerat repudiandae vitae consequuntur explicabo aliquid nulla voluptas, necessitatibus eos temporibus quidem est! Blanditiis facilis odit explicabo veniam necessitatibus eligendi!
+          .about-footer.center
+            %p
+              Made with love by
+              %img{:alt => "Genii", :src => "/assets/genii.png", :width => "40px"}
+
+    .md-overlay
+
+    %header
+      .logo
+        %img#logoClick{:alt => "Startups in Mumbai", :src => "/assets/logo.png", :width => "80%"}
+      %nav
+        %ul
+          %li
+            %a.first-button.md-trigger{"data-modal" => "modal-1", :href => "#"} Make a submission
+          %li
+            %a.second-button.md-trigger{"data-modal" => "modal-2", :href => "#"} About this project
+          %li
+            .search-container
+              %input#searchField{:name => "search", :placeholder => "Search", :type => "text"}
+
+    %section
+      #map
+      .listing
+        .listing-inner
+          %ul
+            %li
+              %span#startupsButton
+                %i.fa.fa-lightbulb-o
+                Startups
+              .content
+                %ul#startupsList
+            %li
+              %span#investorsButton
+                %i.fa.fa-rupee
+                Investors
+              .content
+                %ul#investorsList
+            %li
+              %span#acceleratorsButton
+                %i.fa.fa-line-chart
+                Accelerators
+              .content
+                %ul#acceleratorsList
+            %li
+              %span#incubatorsButton
+                %i.fa.fa-leaf
+                Incubators
+              .content
+                %ul#incubatorsList
+            %li
+              %span#coworkingButton
+                %i.fa.fa-user
+                Co-working spaces
+              .content
+                %ul#coworkingList
+    %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyA52pI2ePsZMPpyYB91F2ev5vJWdYatkrQ", :type => "text/javascript"}

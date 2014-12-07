@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'rails_admin'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'haml-rails'
 
 group :development do
   gem 'capistrano',  '~> 3.3.0'
@@ -27,5 +28,4 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
   gem 'capistrano-db-tasks', require: false
-
 end
