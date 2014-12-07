@@ -69,19 +69,16 @@ $(function() {
 
   var mapOptions = {
     center: { lat: 19.049943, lng: 72.851061},
-    zoom: 13
+    zoom: 11
   };
 
   //get JSON file
 
   $.getJSON("/fetch", function( data ) {
-
     // initial map object
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
     // iterate through the JSON data
     $.each(data, function( key, val ) {
-
       // lat long for current location
       var myLatlng = new google.maps.LatLng(val.latitude,val.longitude);
 

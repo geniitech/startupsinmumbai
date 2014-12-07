@@ -12,8 +12,7 @@ set :ssh_options, {
   user: "webadmin",
   keys: %w(~/.ssh/id_rsa),
   forward_agent: true,
-  auth_methods: %w(publickey),
-  passphrase: 'qwe123'
+  auth_methods: %w(publickey)
 }
 set :rvm1_ruby_version, '2.0.0'
 set :bundle_flags, '--without development test --deployment'

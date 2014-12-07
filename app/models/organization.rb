@@ -40,7 +40,11 @@ class Organization < ActiveRecord::Base
 
   def logo_url=(url)
     unless url.blank?
-      self.logo = URI.parse(URI.encode(url)) rescue nil
+      begin
+        self.logo = URI.parse(URI.encode(url)) rescue nil
+      rescue
+        p "issue processing #{url}"
+      end
     end
   end
 

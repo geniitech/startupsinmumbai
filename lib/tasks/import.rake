@@ -44,3 +44,20 @@ task import_angel_list: :environment do
     end
   end
 end
+
+desc 'fetches and imports data from investors.csv'
+task import_investors: :environment do
+  file = File.open(Rails.root.join('lib', 'tasks', 'investors.csv'))
+  CSV.foreach(file.path, headers: true) do |row|
+    o = Organization.new(
+      name: row[0].squish,
+      website: row[1].squish,
+      description: row[2].squish[0..200],
+      address: row[4].squish,
+      approved: true,
+      category_id: 2,
+      logo_url: row[3]
+    )
+    o.save
+  end
+end
