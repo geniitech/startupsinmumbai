@@ -6,7 +6,7 @@ class MainController < ApplicationController
   end
 
   def fetch
-    @organizations = Organization.where(approved: true).order('name asc')
+    @organizations = Organization.where(approved: true).order('name asc').paginate(page: params[:page], per_page: 20)
     render json: @organizations.to_json(include: [:category], methods: [:logo_json_url])
   end
 

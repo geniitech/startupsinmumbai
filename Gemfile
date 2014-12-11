@@ -18,6 +18,7 @@ gem 'geocoder'
 gem 'rails_admin'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'haml-rails'
+gem 'will_paginate'
 
 group :development do
   gem 'capistrano',  '~> 3.3.0'

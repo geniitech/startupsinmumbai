@@ -1,4 +1,8 @@
 var map,
+    markerCluster,
+    mapOptions,
+    pageNo = 1,
+    markers = [],
     infowindow = null,
     activeMarker = null,
     autocompleteList= [],
@@ -30,86 +34,47 @@ function appendToListing(item, marker) {
   var listItem = document.createElement('li');
   $(listItem).attr('data-name', item.name);
   $(listItem).append('<span>' + item.name + '</span>');
-
   $(listItem).click(function() {
-    map.panTo( new google.maps.LatLng( (item.latitude + 0.02),item.longitude) );
+    map.panTo( new google.maps.LatLng( (item.latitude + 0.002),item.longitude) );
+    map.setZoom(14);
     makeInfoWindow(item, marker);
-
-
     if(activeMarker)
       activeMarker.setAnimation(null);
-
     activeMarker = marker;
     marker.setAnimation(google.maps.Animation.BOUNCE);
-
     marker.setMap(map);
   });
 
-  if(item.category.name == 'Startups')
-  {
+  if(item.category.name == 'Startups') {
     startupsCount++;
     $('#startupsList').append(listItem);
   }
-  else if(item.category.name == 'Investors')
-  {
+  else if(item.category.name == 'Investors') {
     investorsCount++;
     $('#investorsList').append(listItem);
   }
-  else if(item.category.name == 'Incubators')
-  {
+  else if(item.category.name == 'Incubators') {
     incubatorsCount++;
     $('#incubatorsList').append(listItem);
   }
-  else if(item.category.name == 'Coworking Spaces')
-  {
+  else if(item.category.name == 'Coworking Spaces') {
     coworkingCount++;
     $('#coworkingList').append(listItem);
   }
-  else if(item.category.name == 'Accelerators')
-  {
+  else if(item.category.name == 'Accelerators') {
     acceleratorsCount++;
     $('#acceleratorsList').append(listItem);
   }
 }
 
-$(function() {
-
-  $('.search-clear').hide();
-
-  $('.search-clear').click(function() {
-    $('#searchField').val('');
-    $('.search-clear').hide();
-
-  });
-
-  $('#logoClick').click(function() {
-    location.reload();
-  });
-
-  //setup accordians
-
-  $('.listing ul li span').click(function() {
-    var $this = $(this);
-    $this.siblings('.content').toggle();
-  });
-
-  //inital map options
-
-  var mapOptions = {
-    center: { lat: 19.0949, lng: 72.8865},
-    zoom: 12
-  };
-
-  //get JSON file
-
-  $.getJSON("/fetch", function( data ) {
+function fetchJSON(){
+  $.getJSON("/fetch?page=" + pageNo, function(data) {
     // initial map object
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     // iterate through the JSON data
     $.each(data, function( key, val ) {
       // lat long for current location
       var myLatlng = new google.maps.LatLng(val.latitude,val.longitude);
-
       //marker for current company
       var imgUrl = "<%= asset_path('marker-startup.png') %>";
       if(val.category.name == 'Startups')
@@ -131,26 +96,21 @@ $(function() {
           animation: google.maps.Animation.DROP
         });
 
+      markers.push(marker);
       //when marker is clicked
       google.maps.event.addListener(marker, 'click', function() {
-
         if(activeMarker)
           activeMarker.setAnimation(null);
-
         activeMarker = marker;
         marker.setAnimation(google.maps.Animation.BOUNCE);
         marker.setMap(map);
-
         // info window for current company
         makeInfoWindow(val, marker);
         map.panTo( new google.maps.LatLng( (val.latitude + 0.02), val.longitude ) );
       });
-
       marker.setMap(map);
-
       // append to listing
       appendToListing(val, marker);
-
       autocompleteList.push(val.name);
     });
 
@@ -177,8 +137,42 @@ $(function() {
     $('#incubatorsCount').html(incubatorsCount);
     $('#coworkingCount').html(coworkingCount);
     $('#acceleratorsCount').html(acceleratorsCount);
-
+    if(data.length > 0){
+      pageNo++;
+      fetchJSON();
+    } else {
+      markerCluster = new MarkerClusterer(map, markers);
+    }
   });
+}
+
+$(function() {
+
+  $('.search-clear').hide();
+
+  $('.search-clear').click(function() {
+    $('#searchField').val('');
+    $('.search-clear').hide();
+  });
+
+  $('#logoClick').click(function() {
+    location.reload();
+  });
+
+  //setup accordians
+  $('.listing ul li span').click(function() {
+    var $this = $(this);
+    $this.siblings('.content').toggle();
+  });
+
+  //inital map options
+  mapOptions = {
+    center: { lat: 19.0949, lng: 72.8865},
+    zoom: 11
+  };
+
+  //get JSON file
+  fetchJSON();
 
   $('#organization_submitter_email').on('blur', function() {
     $(this).mailcheck({

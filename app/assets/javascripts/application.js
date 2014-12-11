@@ -17,4 +17,5 @@
 //= require classie
 //= require modalEffects
 //= require mailcheck
+//= require markerclusterer_compiled.min
 //= require main

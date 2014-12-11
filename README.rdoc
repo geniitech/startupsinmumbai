@@ -1,3 +1,1 @@
-rails g model Category name:string
-
-rails g model Organization name:string website:string description:string logo:attachment address:string latitude:float longitude:float founded_in:integer approved:boolean submitter_email:string submitter_name:string category:references
+styling options for gmaps pin-clusters can be found here http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/examples/advanced_example.html
