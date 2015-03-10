@@ -32,15 +32,15 @@ class MainController < ApplicationController
 
   def organization_form_submission
     @organization = Organization.new
-    @organization.name = params[:organization][:name]
-    @organization.address = params[:organization][:address]
-    @organization.website = params[:organization][:website]
-    @organization.logo = params[:organization][:logo]
-    @organization.description = params[:organization][:description]
-    @organization.founded_in = params[:organization][:founded_in]
-    @organization.submitter_email = params[:organization][:submitter_email]
-    @organization.submitter_name = params[:organization][:submitter_name]
-    @organization.category_id = params[:organization][:category_id]
+    @organization.name = params[:name]
+    @organization.address = params[:address]
+    @organization.website = params[:website]
+    @organization.logo = params[:logo]
+    @organization.description = params[:description]
+    @organization.founded_in = params[:founded_in]
+    @organization.submitter_email = params[:submitter_email]
+    @organization.submitter_name = params[:submitter_name]
+    @organization.category_id = params[:category_id]
     @organization.approved = false
     if @organization.save
       SubmissionMailer.thanks(@organization)
